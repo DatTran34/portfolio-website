@@ -1,7 +1,13 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  min-height: -webkit-fill-available; 
+  background-color: #2B2A3C;
 }
-
+* {
+  box-sizing: border-box;
+  font-family: 'Share', cursive;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
