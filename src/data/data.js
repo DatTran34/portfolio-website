@@ -63,7 +63,7 @@ const data = {
     {
       name: "PEERSET",
       description:
-        "PeerSet is a web application that was designed to help college professors facilitate Calibrated Peer Review (CPR) in their classes. CPR is a method of peer review in which students are provided with grading instructions and examples of low, medium and high quality solutions to the assignments posed by their professors.",
+        "PeerSet is a web application that was designed to help college professors facilitate Calibrated Peer Review (CPR) in their classes.",
       skills: ["HTML", "CSS", "React.Js", "Restful API", "MySQL", "Java","Open Liberty", "Maven", "Microservices", "JSON Web TokensE"],
       link : "https://github.com/vanessamaike/CSC480-21F"
     

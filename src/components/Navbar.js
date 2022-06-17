@@ -1,7 +1,8 @@
-import {React,useState,useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import { makeStyles } from "@mui/styles";
 import classNames from "classnames";
 import { color } from "../data/data";
+import Resume from "../data/resume.pdf";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "./useMediaQuery";
 const NavbarStyle = makeStyles((theme) => ({
@@ -12,7 +13,6 @@ const NavbarStyle = makeStyles((theme) => ({
     justifyContent: "center",
     padding: "0.5rem 2rem",
     borderBottom: `0.2rem solid ${color.primaryColor}`,
-    
   },
   box: {
     position: "relative",
@@ -40,6 +40,10 @@ const NavbarStyle = makeStyles((theme) => ({
     "&:hover": {
       borderBottom: `0.2rem solid ${color.primaryColor}`,
     },
+    "& a": {
+      color: "white",
+      textDecoration: "none",
+    },
   },
   underline: {
     height: "0.2rem",
@@ -59,7 +63,7 @@ const NavbarStyle = makeStyles((theme) => ({
     gridGap: "0.3rem",
     "& div": {
       background: `${color.primaryColor}`,
-      height: "0.4rem"
+      height: "0.4rem",
     },
   },
   toggle_navbar: {
@@ -74,7 +78,7 @@ const NavbarStyle = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   toggle_navbar_element: {
     textAlign: "center",
@@ -87,33 +91,37 @@ const NavbarStyle = makeStyles((theme) => ({
     cursor: "pointer",
     "&:hover": {
       background: `${color.secondaryColor}`,
-      color: `${color.thirdColor}`
+      color: `${color.thirdColor}`,
+    },
+    "& a": {
+      color: `${color.secondaryColor}`,
+      textDecoration: "none",
     },
   },
 }));
 
-function Navbar({homeRef,projectsRef,aboutMeRef,contactMeRef}) {
+function Navbar({ homeRef, projectsRef, aboutMeRef, contactMeRef }) {
   const navbarStyle = NavbarStyle();
   let navigate = useNavigate();
   let isPageWide = useMediaQuery("(min-width: 720px)");
   //let isPageMedium = useMediaQuery("(min-width: 540px)");
-  const [toggle,setToggle] = useState(false);
-  
+  const [toggle, setToggle] = useState(false);
+
   const scrollToHome = () => {
-    homeRef.current.scrollIntoView({ behavior: 'smooth' })
-  }
+    homeRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   const scrollToProjects = () => {
-    projectsRef.current.scrollIntoView({ behavior: 'smooth' })
-  }
+    projectsRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   const scrollToAboutMe = () => {
-    aboutMeRef.current.scrollIntoView({ behavior: 'smooth' })
-  }
+    aboutMeRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   const scrollToContactMe = () => {
-    contactMeRef.current.scrollIntoView({ behavior: 'smooth' })
-  }
+    contactMeRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div>
@@ -132,11 +140,43 @@ function Navbar({homeRef,projectsRef,aboutMeRef,contactMeRef}) {
         >
           <div style={{ width: "3.5rem" }}></div>
           <div className={navbarStyle.container}>
-            <div className={navbarStyle.button} onClick={()=>{scrollToHome()}}>Home</div>
-            <div className={navbarStyle.button} onClick={()=>{scrollToProjects()}}>Experience</div>
-            <div className={navbarStyle.button}>Resume</div>
-            <div className={navbarStyle.button} onClick={()=>{scrollToContactMe()}}>Contact Me</div>
-            <div className={navbarStyle.button} onClick={()=>{scrollToAboutMe()}}>About Me</div>
+            <div
+              className={navbarStyle.button}
+              onClick={() => {
+                scrollToHome();
+              }}
+            >
+              Home
+            </div>
+            <div
+              className={navbarStyle.button}
+              onClick={() => {
+                scrollToProjects();
+              }}
+            >
+              Experience
+            </div>
+            <div className={navbarStyle.button}>
+              <a href={Resume} target="_blank">
+                Resume
+              </a>
+            </div>
+            <div
+              className={navbarStyle.button}
+              onClick={() => {
+                scrollToContactMe();
+              }}
+            >
+              Contact Me
+            </div>
+            <div
+              className={navbarStyle.button}
+              onClick={() => {
+                scrollToAboutMe();
+              }}
+            >
+              About Me
+            </div>
           </div>
         </div>
       ) : (
@@ -153,12 +193,16 @@ function Navbar({homeRef,projectsRef,aboutMeRef,contactMeRef}) {
           </div>
           {toggle === true && (
             <div className={navbarStyle.toggle_navbar}>
-              <div style={{textAlign:"center"}}>
+              <div style={{ textAlign: "center" }}>
                 <div className={navbarStyle.toggle_navbar_element}>Home</div>
                 <div className={navbarStyle.toggle_navbar_element}>
                   Experience
                 </div>
-                <div className={navbarStyle.toggle_navbar_element}>Resume</div>
+                <div className={navbarStyle.toggle_navbar_element}>
+                  <a href={Resume} target="_blank">
+                    Resume
+                  </a>
+                </div>
                 <div className={navbarStyle.toggle_navbar_element}>
                   Contact Me
                 </div>

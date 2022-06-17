@@ -54,6 +54,10 @@ const TabListStyle = makeStyles((theme) => ({
       width: "100%",
     },
   },
+  education_panel1: {
+    
+  }
+  ,
   // ============= EDUCATION PANEL ==============
   /* The actual timeline (the vertical ruler) */
   education_panel: {
@@ -62,19 +66,19 @@ const TabListStyle = makeStyles((theme) => ({
     maxWidth: "1200px",
     margin: "0 auto",
     /* The actual timeline (the vertical ruler) */
-    "&:after": {
-      position: "absolute",
-      content: '""',
-      top: 0,
-      bottom: 0,
-      left: "50%",
-      background: `${color.primaryColor}`,
-      width: "0.2rem",
-      marginLeft: "-3px",
-      ["@media (max-width:720px)"]: {
-        left: "0",
-      },
-    },
+    // "&:after": {
+    //   position: "absolute",
+    //   content: '""',
+    //   top: 0,
+    //   bottom: 0,
+    //   left: "50%",
+    //   background: `${color.primaryColor}`,
+    //   width: "0.2rem",
+    //   marginLeft: "-3px",
+    //   ["@media (max-width:720px)"]: {
+    //     left: "0",
+    //   },
+    // },
   },
   /* Container around content */
   education_box: {
@@ -83,20 +87,20 @@ const TabListStyle = makeStyles((theme) => ({
     backgroundColor: "inherit",
     width: "50%",
     /* The circles on the timeline */
-    "&:after": {
-      position: "absolute",
-      content: '""',
-      top: "15px",
-      right: "-15px",
-      width: "30px",
-      height: "30px",
-      background: `${color.thirdColor}`,
-      borderRadius: "50%",
-      zIndex: "1",
-      ["@media (max-width:720px)"]: {
-        left: "-15px"
-      },
-    },
+    // "&:after": {
+    //   position: "absolute",
+    //   content: '""',
+    //   top: "15px",
+    //   right: "-15px",
+    //   width: "30px",
+    //   height: "30px",
+    //   background: `${color.thirdColor}`,
+    //   borderRadius: "50%",
+    //   zIndex: "1",
+    //   ["@media (max-width:720px)"]: {
+    //     left: "-15px"
+    //   },
+    // },
     ["@media (max-width:720px)"]: {
       width: "100%",
       paddingLeft: "3rem",
@@ -177,7 +181,7 @@ function TabList() {
         </TabPanel> */}
         {/* ============= EDUCATION ============== */}
         <TabPanel value={currentTab} index={3}>
-          <EducationPanel />
+          <EducationPanel1 />
         </TabPanel>
       </div>
     </div>
@@ -225,6 +229,26 @@ function SkillsPanel() {
         })}
       </div>
       {/* <img style={{width: "10rem"}} src={skill.link}></img> */}
+    </div>
+  );
+}
+function EducationPanel1() {
+  const tabListStyle = TabListStyle();
+  return (
+    <div className={`${tabListStyle.tab_content_box}`}>
+      <div className={tabListStyle.education_panel}>
+        {data.education.map((school, index) => {
+            return <div className={`${tabListStyle.education_box}`}>
+              <div className={tabListStyle.education_box_content}>
+                <div>School: {data.education[index].name}</div>
+                <div>Degree: {data.education[index].Degree}</div>
+                <div>Major: {data.education[index].Major}</div>
+                <div>{data.education[index].GPA}</div>
+             </div>
+              <div className={tabListStyle.education_box_time}>{data.education[index].year}</div>
+            </div>;
+        })}
+      </div>
     </div>
   );
 }
